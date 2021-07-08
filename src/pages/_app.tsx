@@ -1,3 +1,4 @@
+import 'tailwindcss/tailwind.css';
 import { Provider } from 'react-redux';
 import { AppProps } from 'next/app';
 import { ThemeProvider } from 'styled-components';

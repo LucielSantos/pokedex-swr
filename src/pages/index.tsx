@@ -1,39 +1,40 @@
-import { useCallback } from 'react';
+import { useState } from 'react';
 
-import ReactLogo from '../assets/reactLogo.svg';
-
+import { Head, PokemonList, Nav } from '../components';
 import { Container } from '../styles/pages/Home';
-import { Typography, Head } from '../components';
-import { homeConstants } from '../constants/home';
-
-import { useHome } from '../hooks/pages/useHome';
 
 const Home: React.FC = () => {
-  const { count, addCount } = useHome();
-
-  const onClickLogo = useCallback(() => {
-    addCount();
-  }, [addCount]);
+  const [page, setPage] = useState(0);
 
   return (
     <Container>
       <Head title="Home page" />
 
-      <ReactLogo
-        height="10rem"
-        width="10rem"
-        style={{ transform: `rotate(${20 * count}deg)`, cursor: 'pointer', userSelect: 'none' }}
-        onClick={onClickLogo}
-      />
-      <sub>
-        Click on logo to rotate
-        <br />
-        (the count is on Redux state, see on Redux DevTools)
-      </sub>
+      <Nav isPaginated />
 
-      <h1>{homeConstants.title}</h1>
+      <PokemonList page={page} />
 
-      <Typography>A React JS + Next.js structure made by Luciel Santos</Typography>
+      <div className="hidden">
+        <PokemonList page={page + 1} />
+      </div>
+
+      <div className="flex items-center justify-center my-5 pb-5">
+        <button
+          className="bg-purple-700 px-5 py-2 rounded-md transform duration-300 hover:-translate-y-0.5"
+          onClick={() => page > 0 && setPage(page - 1)}
+        >
+          Prev
+        </button>
+
+        <div className="mx-5">{page}</div>
+
+        <button
+          className="bg-purple-700 px-5 py-2 rounded-md transform duration-300 hover:-translate-y-0.5"
+          onClick={() => setPage(page + 1)}
+        >
+          Next
+        </button>
+      </div>
     </Container>
   );
 };

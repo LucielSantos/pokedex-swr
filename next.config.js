@@ -8,6 +8,9 @@ const withImages = require('next-images')
 
 const withImagesConfig = withImages({
   esModule: true,
+  images: {
+    domains: ['pokeres.bastionbot.org'],
+  },
 })
 
 const nextConfig = {}
