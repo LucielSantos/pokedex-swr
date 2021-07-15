@@ -8,7 +8,7 @@ const Home: React.FC = () => {
 
   return (
     <Container>
-      <Head title="Home page" />
+      <Head title="SWR - Paginated" />
 
       <Nav isPaginated />
 

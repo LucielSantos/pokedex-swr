@@ -29,7 +29,7 @@ const InfinityScroll: React.FC = () => {
 
   return (
     <div className="flex flex-col items-center p-8">
-      <Head title="Infinity scroll" />
+      <Head title="SWR - Infinity scroll" />
 
       <Nav isInfinity />
 
